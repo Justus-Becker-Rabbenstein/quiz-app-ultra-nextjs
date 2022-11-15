@@ -1,11 +1,28 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-const products = ["Handy", "Banane"];
+export const products = [
+  {
+    id: 1,
+    name: "Leberwurst",
+    category: "Food",
+  },
+  {
+    id: 2,
+    name: "Banane",
+    category: "Food",
+  },
+  {
+    id: 3,
+    name: "Handy",
+    category: "Technology",
+  },
+];
 
 export default function handler(req, res) {
-  console.log(req.method);
-  console.log(req.body);
-  console.log(req.headers);
-  console.log(req.query);
+  console.log("Req method:", req.method);
+  console.log("Req body:", req.body);
+  console.log("Req headers:", req.headers);
+  console.log("Req query:", req.query);
+  console.log("typeOf Req query:", typeof req.query);
 
   /* Lange Schreibweise
   if (req.method === 'GET') {
@@ -17,14 +34,25 @@ export default function handler(req, res) {
   }
   */
 
-  /* kurze Schreibweise */
+  // kurze Schreibweise
   switch (req.method) {
     case "PUT":
     case "PATCH":
       res.status(200).json({ message: "PUT or PATCH called." });
       break;
     case "GET":
-      res.status(200).json(products);
+      if (req.query.category) {
+        res
+          .status(200)
+          .json(
+            products.filter(
+              (product) => product.category === req.query.category
+            )
+          );
+      } else {
+        res.status(200).json(products);
+      }
+
       break;
     case "POST":
       res.status(200).json({ message: "Product successfully saved" });
@@ -34,6 +62,4 @@ export default function handler(req, res) {
   }
 
   /* oder case ... return res.status(200).json(products); statt break */
-
-  res.status(200).json(products);
 }
