@@ -6,11 +6,41 @@ const Navigation = () => {
     <navbarContainer>
       <ulContainer>
         <Link href="/api/hello">
-          <liContainer>house-user-solid.svg</liContainer>
+          <liContainer>
+            <img
+              src="/house-user-solid.svg"
+              alt="test"
+              height="100px"
+              width="100px"
+            />
+          </liContainer>
         </Link>
-        <liContainer>bookmark-solid.svg</liContainer>
-        <liContainer>file-circle-plus-solid.svg </liContainer>
-        <liContainer>user-solid.svg </liContainer>
+        <liContainer>
+          <img
+            src="/bookmark-solid.svg"
+            alt="test"
+            height="100px"
+            width="100px"
+          />
+        </liContainer>
+        <Link href="/create/Create">
+          <liContainer>
+            <img
+              src="/file-circle-plus-solid.svg"
+              alt="Create Page"
+              height="100px"
+              width="100px"
+            />
+          </liContainer>
+        </Link>
+        <liContainer>
+          <img
+            src="/user-solid.svg "
+            alt="Profile Page"
+            height="100px"
+            width="100px"
+          />
+        </liContainer>
       </ulContainer>
     </navbarContainer>
   );
